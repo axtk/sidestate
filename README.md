@@ -18,6 +18,8 @@ Roughly, their purpose boils down to the following:
 - `URLState` is `State` that stores the URL + syncs with the browser's URL in a SPA fashion
 - `Route` is `URLState` + native-like APIs for SPA navigation and an API for URL matching
 
+Contents: [State](#state) · [PersistentState](#persistentstate) · [Route](#route) · [Annotated examples](#annotated-examples) · [Integrations](#integrations)
+
 ## `State`
 
 A thin data container for dynamic data sharing without tight coupling.
@@ -38,7 +40,7 @@ counterState.on("set", ({ current }) => {
 
 In this example, a button changes a counter value and an `<output>` element shows the updating value. Both elements are only aware of the shared counter state, but not of each other.
 
-A `"set"` event callback is invoked each time the state value changes and immediately when the callback is added. Subscribe to the `"update"` event to have the callback respond only to the subsequent state changes without the immediate invocation.
+A `"set"` event callback is called each time the state value changes and immediately when the callback is added. Subscribe to the `"update"` event to have the callback respond only to the subsequent state changes without the immediate invocation.
 
 ## `PersistentState`
 
@@ -141,6 +143,15 @@ route.on("navigationstart", ({ href }) => {
   }
 });
 ```
+
+## Annotated examples
+
+- [Shared state](https://codesandbox.io/p/sandbox/lqt3z2?file=%252Fsrc%252Findex.ts), counter app, State
+- [Shared form input state](https://codesandbox.io/p/sandbox/4q7f99?file=%252Fsrc%252Findex.ts), simple form, State
+- [Persistent shared state](https://codesandbox.io/p/sandbox/c9gt3r?file=%252Fsrc%252Findex.ts), counter app, PersistentState
+- [URL-based rendering](https://codesandbox.io/p/sandbox/kt6m5l?file=%252Fsrc%252Findex.ts), Route
+- [Type-safe URL-based rendering](https://codesandbox.io/p/sandbox/qg7qg3?file=%2Fsrc%2Findex.ts), Route, url-shape, zod
+- [SPA redirection](https://codesandbox.io/p/sandbox/rpl3gh?file=%252Fsrc%252Findex.ts), Route
 
 ## Integrations
 
